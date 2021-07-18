@@ -61,3 +61,50 @@ We can declare variables in two ways, using the `var` keyword or  `:=` sign, the
 3. Assigning an untyped constant or a literal to a variable and the default type for the constant or literal isn't the type we want for the variable we use `var x byte = 20`to reinforce the type.
 4. Since `:=` allows assigning to both new and existing variables, it sometimes creates new variables when we think that we are reusing existing ones
 
+
+
+## Control Structures
+
+### Break on Switch?
+
+One major difference between the `switch` in Go and other languages like C or Java is that Go only runs the selected case and not all the cases that follow it. For that reason we don't need to use a `break` after each `case`.
+
+### Choosing between blank switch and if
+
+If we have a chain of if/else we should use a blank instead, it makes the code more readable.
+
+```go
+switch {
+  case x == 1: //action 1
+  case x == 2: //action 2
+  case x == 3: //action 3
+}
+```
+
+Instead of
+
+```go
+if x == 1 {
+  // action 1
+} else if x == 2{
+  // action 2
+} else if x == 3{
+  // action 3
+}
+```
+
+### Four ways off for
+
+We can write a for statment in four different way:
+
+1. Complete or C Style `for i := 0; i < 10; i++ { ... }`
+2. Condition Only `for i < 10 { ... }`
+3. Infinite `for{ ... }`
+4. Range `for i, v := range values { ... }`
+
+The `range` is similar to the `forEach` on other languages, it will iterate hover the entire slice of elements and for each iteration it returns the index and a copy of the element on the index position. Since `v` is a copy of the original element, if we change `v` it will not reflect on the original element unless it's a slice of pointers.
+
+
+
+
+
